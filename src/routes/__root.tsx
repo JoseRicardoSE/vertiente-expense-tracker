@@ -114,13 +114,48 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+const NAV = [
+  { to: "/", label: "Ingreso" },
+  { to: "/gastos", label: "Consolidado" },
+  { to: "/rendiciones", label: "Rendiciones" },
+] as const;
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="min-h-screen bg-background">
+        <header className="sticky top-0 z-30 border-b border-border bg-card no-print">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3">
+            <div className="flex items-center gap-3">
+              <div className="flex size-9 items-center justify-center rounded-md bg-primary font-semibold text-primary-foreground">
+                CV
+              </div>
+              <div>
+                <p className="text-sm font-semibold leading-tight">Constructora Vertiente</p>
+                <p className="text-xs text-muted-foreground">Rendición de gastos de obra · V0</p>
+              </div>
+            </div>
+            <nav className="flex items-center gap-1">
+              {NAV.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  activeOptions={{ exact: item.to === "/" }}
+                  className="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                  activeProps={{ className: "bg-accent text-accent-foreground" }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </header>
+        <Outlet />
+      </div>
+      <Toaster richColors position="top-right" />
     </QueryClientProvider>
   );
 }
+
