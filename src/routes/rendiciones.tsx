@@ -123,7 +123,7 @@ function RendicionesPage() {
                     <Trash2 className="size-4 text-destructive" />
                   </Button>
                 </div>
-              </CardHeader>
+              </div>
               <CardContent>
                 <Table>
                   <TableHeader>

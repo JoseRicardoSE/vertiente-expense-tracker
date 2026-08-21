@@ -242,7 +242,7 @@ function GastosPage() {
               <Download className="size-4" /> Generar rendición ({seleccionados.length})
             </Button>
           </div>
-        </CardHeader>
+        </div>
         <CardContent className="overflow-x-auto">
           <Table>
             <TableHeader>
