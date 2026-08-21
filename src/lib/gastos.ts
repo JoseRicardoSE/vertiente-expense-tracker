@@ -182,9 +182,11 @@ export function useGastos() {
     );
     escribir(
       GASTOS_KEY,
-      leer<Gasto>(GASTOS_KEY).map((g) =>
-        g.rendicionId === id ? { ...g, rendicionId: undefined } : g,
-      ),
+      leer<Gasto>(GASTOS_KEY).map((g) => {
+        if (g.rendicionId !== id) return g;
+        const { rendicionId: _omitido, ...resto } = g;
+        return resto as Gasto;
+      }),
     );
   }, []);
 
