@@ -14,16 +14,182 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      boletas: {
+        Row: {
+          adjunto_path: string | null
+          created_at: string
+          estado: string
+          fecha_emision: string
+          glosa: string
+          id: string
+          ingresado_por: string
+          monto_total: number
+          obra_id: string
+          proveedor_nombre: string | null
+          proveedor_rut: string
+          rendicion_id: string | null
+        }
+        Insert: {
+          adjunto_path?: string | null
+          created_at?: string
+          estado?: string
+          fecha_emision: string
+          glosa: string
+          id?: string
+          ingresado_por: string
+          monto_total: number
+          obra_id: string
+          proveedor_nombre?: string | null
+          proveedor_rut: string
+          rendicion_id?: string | null
+        }
+        Update: {
+          adjunto_path?: string | null
+          created_at?: string
+          estado?: string
+          fecha_emision?: string
+          glosa?: string
+          id?: string
+          ingresado_por?: string
+          monto_total?: number
+          obra_id?: string
+          proveedor_nombre?: string | null
+          proveedor_rut?: string
+          rendicion_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "boletas_obra_id_fkey"
+            columns: ["obra_id"]
+            isOneToOne: false
+            referencedRelation: "obras"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "boletas_rendicion_id_fkey"
+            columns: ["rendicion_id"]
+            isOneToOne: false
+            referencedRelation: "rendiciones"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      obras: {
+        Row: {
+          codigo: string | null
+          created_at: string
+          estado: string
+          id: string
+          nombre: string
+        }
+        Insert: {
+          codigo?: string | null
+          created_at?: string
+          estado?: string
+          id?: string
+          nombre: string
+        }
+        Update: {
+          codigo?: string | null
+          created_at?: string
+          estado?: string
+          id?: string
+          nombre?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          nombre: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id: string
+          nombre?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          nombre?: string
+        }
+        Relationships: []
+      }
+      rendiciones: {
+        Row: {
+          creado_por: string
+          created_at: string
+          estado: string
+          folio: string
+          id: string
+          obra_id: string
+          total_rendicion: number
+        }
+        Insert: {
+          creado_por: string
+          created_at?: string
+          estado?: string
+          folio?: string
+          id?: string
+          obra_id: string
+          total_rendicion?: number
+        }
+        Update: {
+          creado_por?: string
+          created_at?: string
+          estado?: string
+          folio?: string
+          id?: string
+          obra_id?: string
+          total_rendicion?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rendiciones_obra_id_fkey"
+            columns: ["obra_id"]
+            isOneToOne: false
+            referencedRelation: "obras"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "administrativa" | "jefe_obra"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +316,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "administrativa", "jefe_obra"],
+    },
   },
 } as const
