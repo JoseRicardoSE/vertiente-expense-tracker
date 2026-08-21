@@ -5,7 +5,7 @@ import { FileSpreadsheet, Printer, Trash2 } from "lucide-react";
 
 import { EstadoBadge } from "@/components/EstadoBadge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 import {
   Table,
   TableBody,

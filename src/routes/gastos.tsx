@@ -5,7 +5,7 @@ import { Download, FileSpreadsheet, Trash2 } from "lucide-react";
 
 import { EstadoBadge } from "@/components/EstadoBadge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -243,7 +243,7 @@ function GastosPage() {
             </Button>
           </div>
         </div>
-        <CardContent className="overflow-x-auto">
+        <CardContent className="overflow-x-auto pt-4">
           <Table>
             <TableHeader>
               <TableRow>
