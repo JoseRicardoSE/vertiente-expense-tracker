@@ -218,7 +218,7 @@ function GastosPage() {
       </Card>
 
       <Card>
-        <CardHeader className="flex flex-wrap items-end justify-between gap-4">
+        <div className="flex flex-wrap items-end justify-between gap-4 px-6 pt-6">
           <div>
             <CardTitle className="text-base">Boletas</CardTitle>
             <CardDescription>

@@ -92,7 +92,7 @@ function RendicionesPage() {
 
           {seleccionada && (
             <Card className="print-area">
-              <CardHeader className="flex flex-wrap items-start justify-between gap-4">
+              <div className="flex flex-wrap items-start justify-between gap-4 px-6 pt-6">
                 <div>
                   <CardTitle>Reporte de rendición {seleccionada.folio}</CardTitle>
                   <CardDescription>
