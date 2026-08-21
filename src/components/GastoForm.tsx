@@ -97,8 +97,7 @@ export function GastoForm() {
       monto: montoNumero,
       glosa: glosa.trim(),
       estado,
-      adjuntoNombre: adjunto?.nombre,
-      adjuntoDataUrl: adjunto?.dataUrl,
+      ...(adjunto ? { adjuntoNombre: adjunto.nombre, adjuntoDataUrl: adjunto.dataUrl } : {}),
     });
     toast.success(`Boleta registrada por ${formatCLP(montoNumero)}`, {
       description: `${obra} · se mantiene la obra seleccionada`,
