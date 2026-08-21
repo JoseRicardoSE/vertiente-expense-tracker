@@ -139,7 +139,10 @@ function GastosPage() {
         <Button
           variant="outline"
           onClick={() => {
-            if (filtrados.length === 0) return toast.error("No hay datos para exportar.");
+            if (filtrados.length === 0) {
+              toast.error("No hay datos para exportar.");
+              return;
+            }
             descargarCSV("gastos_consolidado", filtrados);
           }}
         >
